@@ -5,7 +5,7 @@ const int resolution = 8; // 8位分辨率（0-255）
 
 // 全局变量
 int brightnessA = 0;       // LED1亮度（0-255）
-int brightnessB = 255;     // LED2亮度（初始与A反相）
+int brightnessB = 0;     // LED2亮度（初始与A反相）
 int fadeAmount = 5;        // 亮度变化步长（±5）
 
 void setup() {
@@ -19,7 +19,7 @@ void setup() {
 void loop() {
   // 1. 双LED反相渐变
   brightnessA += fadeAmount;  // LED1亮度递增
-  brightnessB -= fadeAmount;  // LED2亮度递减（与A反相）
+  brightnessB += fadeAmount;  // LED2亮度递减（与A反相）
 
   // 2. 边界检测：到达0或255时反转方向
   if (brightnessA <= 0 || brightnessA >= 255) {
